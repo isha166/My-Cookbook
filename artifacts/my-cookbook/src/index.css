@@ -214,7 +214,59 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:fo
 .step-copy { font-size:17px; line-height:1.6; max-width:640px; color:#684f39; }
 .step-tools { margin-top:32px; display:flex; flex-wrap:wrap; gap:9px; }
 .tool-chip { display:inline-flex; align-items:center; gap:7px; padding:9px 11px; background:rgba(61,93,77,.08); color:var(--sage); font:11px var(--font-mono); border-radius:5px; }
+.cooking-stage { position:relative; min-height:360px; margin-top:30px; overflow:hidden; background:linear-gradient(145deg, #314d40, #20362d 72%); color:#f8f0df; border-radius:7px; isolation:isolate; box-shadow:inset 0 0 0 1px rgba(255,255,255,.08), 0 15px 25px rgba(61,45,28,.14); }
+.cooking-stage::before { content:''; position:absolute; inset:0; z-index:-2; opacity:.2; background:radial-gradient(circle at 50% 54%, rgba(227,185,77,.3), transparent 22%), repeating-linear-gradient(93deg, rgba(255,255,255,.025) 0 1px, transparent 1px 9px); }
+.stage-glow { position:absolute; z-index:-1; width:340px; height:230px; border-radius:50%; left:50%; top:49%; transform:translate(-50%,-50%); background:var(--tomato); filter:blur(28px); pointer-events:none; transition:opacity .5s ease; }
+.stage-label { position:absolute; top:17px; left:19px; right:19px; display:flex; justify-content:space-between; gap:10px; color:rgba(248,240,223,.62); font:10px var(--font-mono); text-transform:uppercase; letter-spacing:.08em; }
+.stage-label .micro { color:var(--mustard); }
+.ingredient-orbit { position:absolute; inset:0; }
+.ingredient-morsel { position:absolute; z-index:4; width:125px; min-height:52px; padding:8px 9px 7px; display:grid; grid-template-columns:20px 1fr; grid-template-rows:1fr auto; gap:1px 5px; text-align:left; border:1px solid rgba(248,240,223,.2); border-radius:7px; color:#f8f0df; background:rgba(248,240,223,.11); backdrop-filter:blur(6px); box-shadow:0 8px 18px rgba(0,0,0,.12); transform-origin:center bottom; transition:background .25s ease, border-color .25s ease; }
+.ingredient-morsel:hover { background:rgba(248,240,223,.2); border-color:rgba(227,185,77,.8); }
+.ingredient-morsel.is-added { pointer-events:auto; background:rgba(227,185,77,.2); border-color:rgba(227,185,77,.35); }
+.ingredient-morsel span:not(.morsel-mark) { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font:11px var(--font-body); align-self:end; }
+.ingredient-morsel small { grid-column:2; color:rgba(248,240,223,.48); font:9px var(--font-mono); text-transform:uppercase; letter-spacing:.08em; }
+.morsel-mark { grid-row:1 / span 2; display:grid; place-items:center; color:var(--mustard); }
+.ingredient-morsel-0 { left:5%; top:28%; transform:rotate(-5deg); }
+.ingredient-morsel-1 { left:5%; top:55%; transform:rotate(4deg); }
+.ingredient-morsel-2 { right:5%; top:24%; transform:rotate(4deg); }
+.ingredient-morsel-3 { right:5%; top:51%; transform:rotate(-5deg); }
+.ingredient-morsel-4 { left:24%; top:12%; transform:rotate(-3deg); }
+.ingredient-morsel-5 { right:24%; top:12%; transform:rotate(3deg); }
+.pan-shadow { position:absolute; width:250px; height:42px; left:50%; top:72%; transform:translateX(-50%); border-radius:50%; background:rgba(0,0,0,.38); filter:blur(9px); }
+.pan-illustration { position:absolute; z-index:2; width:255px; height:190px; left:50%; top:48%; margin-left:-127.5px; margin-top:-95px; transform-origin:center 65%; }
+.pan-handle { position:absolute; width:150px; height:37px; right:-101px; top:72px; border-radius:4px 14px 14px 4px; background:linear-gradient(#374d43, #192a23); transform:rotate(3deg); box-shadow:inset 0 3px rgba(255,255,255,.08), 0 7px 10px rgba(0,0,0,.2); }
+.pan-rim { position:absolute; inset:23px 19px 18px 19px; border-radius:50%; background:linear-gradient(135deg,#1b2520,#586458 45%,#141a17); box-shadow:inset 0 0 0 8px rgba(0,0,0,.24), 0 14px 17px rgba(0,0,0,.25); transform:rotate(-4deg); }
+.pan-interior { position:absolute; inset:15px; border-radius:50%; overflow:hidden; background:radial-gradient(circle at 45% 42%, #b87542, #7b3e2d 45%, #39231d 75%); box-shadow:inset 0 5px 12px rgba(255,218,137,.28); }
+.pan-food { position:absolute; inset:18px; border-radius:50%; overflow:hidden; background:radial-gradient(circle at 30% 40%, rgba(250,188,73,.28), transparent 11%), radial-gradient(circle at 68% 62%, rgba(250,188,73,.24), transparent 13%), rgba(130,52,38,.5); }
+.pan-food i { position:absolute; width:15px; height:8px; display:block; border-radius:50% 30% 50% 30%; background:#eab86b; box-shadow:0 1px 3px rgba(44,19,10,.38); }
+.pan-food i:nth-child(3n) { background:#e27a45; width:11px; height:11px; border-radius:45%; }
+.pan-food i:nth-child(4n) { background:#d6d68c; width:17px; height:5px; transform:rotate(30deg); }
+.heat-ring { position:absolute; z-index:-1; left:50%; top:50%; width:260px; height:170px; border:2px solid var(--tomato); border-radius:50%; transform:translate(-50%,-50%); filter:blur(1px); animation:heatPulse 1.7s ease-in-out infinite; }
+.heat-ring-two { width:300px; height:205px; opacity:.24; animation-delay:-.7s; }
+@keyframes heatPulse { 0%,100% { transform:translate(-50%,-50%) scale(.96); } 50% { transform:translate(-50%,-50%) scale(1.05); } }
+.steam-column { position:absolute; z-index:3; width:100px; height:115px; left:77px; top:-2px; pointer-events:none; }
+.steam-column b { position:absolute; width:16px; height:70px; display:block; border-radius:50%; border-left:2px solid rgba(248,240,223,.68); filter:blur(.6px); }
+.steam-column b:nth-child(1) { left:12px; transform:rotate(13deg); }
+.steam-column b:nth-child(2) { left:42px; transform:rotate(-10deg); }
+.steam-column b:nth-child(3) { left:70px; transform:rotate(8deg); }
+.stage-footer { position:absolute; bottom:17px; left:19px; right:19px; display:flex; justify-content:space-between; align-items:center; gap:14px; color:rgba(248,240,223,.66); font:11px var(--font-mono); }
+.heat-meter { display:flex; align-items:center; gap:7px; color:var(--mustard); white-space:nowrap; }
+.heat-meter i { width:58px; height:5px; display:block; overflow:hidden; border-radius:99px; background:rgba(248,240,223,.18); }
+.heat-meter i b { display:block; height:100%; border-radius:inherit; background:var(--mustard); transition:width .5s ease; }
+.is-served .pan-illustration, .is-served .pan-shadow { opacity:.3; }
+.served-plate { position:absolute; z-index:6; width:150px; height:150px; left:50%; top:51%; display:grid; place-items:center; transform:translate(-50%,-50%); border:10px solid #f5e8c9; border-radius:50%; background:#e3b94d; box-shadow:0 13px 20px rgba(0,0,0,.25), inset 0 0 0 2px rgba(61,93,77,.35); }
+.served-plate strong { position:absolute; bottom:22px; font:9px var(--font-mono); letter-spacing:.12em; text-transform:uppercase; color:var(--sage); }
+.served-food { position:absolute; width:76px; height:47px; border-radius:50%; background:#b84a35; box-shadow:inset 0 5px 0 rgba(255,224,141,.26); }
+.served-food span { position:absolute; width:26px; height:7px; border-radius:50%; background:#f4d685; }
+.served-food span:nth-child(1) { top:11px; left:16px; transform:rotate(17deg); }.served-food span:nth-child(2) { top:25px; left:31px; transform:rotate(-9deg); }.served-food span:nth-child(3) { top:12px; right:9px; transform:rotate(-21deg); }
+.served-steam { position:absolute; width:50px; height:50px; top:21px; }
+.served-steam i { position:absolute; width:10px; height:35px; border-left:2px solid rgba(248,240,223,.65); border-radius:50%; animation:steamRise 1.9s ease-in-out infinite; }
+.served-steam i:nth-child(1) { left:3px; }.served-steam i:nth-child(2) { left:19px; animation-delay:-.6s; }.served-steam i:nth-child(3) { left:34px; animation-delay:-1.15s; }
+@keyframes steamRise { 0%,100% { opacity:0; transform:translateY(8px); } 45% { opacity:.8; } 75% { opacity:0; transform:translateY(-17px); } }
 .timer-card { margin-top:27px; padding:17px 19px; border-left:3px solid var(--mustard); background:rgba(227,185,77,.13); display:flex; justify-content:space-between; align-items:center; gap:15px; }
+.timer-readout { min-width:155px; }
+.timer-progress { display:block; width:100%; height:4px; margin-top:9px; overflow:hidden; border-radius:99px; background:rgba(61,93,77,.14); }
+.timer-progress i { display:block; height:100%; border-radius:inherit; background:var(--tomato); transition:width 1s linear; }
 .timer-card strong { font:600 26px var(--font-display); }
 .timer-actions { display:flex; gap:7px; }
 .cook-foot { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:30px; padding-top:22px; border-top:1px solid rgba(110,75,47,.17); }
@@ -293,7 +345,8 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:fo
   .choice-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); } .choice { min-height:43px; }
   .reveal-hero { padding:39px 23px 34px; margin:0 -17px; } .reveal-content h1 { font-size: clamp(3.2rem, 15vw, 6rem); }
   .reveal-body, .ingredient-columns, .explore-grid, .saved-grid { grid-template-columns:1fr; }
-  .cook-layout { display:block; } .cook-progress { position:static; margin-bottom:18px; } .progress-list { display:flex; overflow:auto; gap:5px; } .progress-step { min-width:48px; width:auto; padding:5px; } .progress-step span:last-child { display:none; }
+   .cook-layout { display:block; } .cook-progress { position:static; margin-bottom:18px; } .progress-list { display:flex; overflow:auto; gap:5px; } .progress-step { min-width:48px; width:auto; padding:5px; } .progress-step span:last-child { display:none; }
+   .cooking-stage { min-height:410px; margin-left:-4px; margin-right:-4px; } .ingredient-morsel { width:103px; } .ingredient-morsel-0 { left:2%; top:24%; } .ingredient-morsel-1 { left:2%; top:57%; } .ingredient-morsel-2 { right:2%; top:24%; } .ingredient-morsel-3 { right:2%; top:57%; } .ingredient-morsel-4 { left:17%; top:9%; } .ingredient-morsel-5 { right:17%; top:9%; } .pan-illustration { top:54%; } .stage-footer { align-items:flex-end; } .stage-footer > span:first-child { max-width:190px; line-height:1.45; } .heat-meter { flex-direction:column; gap:3px; }
   .cook-card h1 { font-size:3.4rem; } .cook-foot { align-items:stretch; flex-direction:column; } .cook-foot .btn { width:100%; }
   .world-map { min-height:320px; } .aside-card h3 { font-size:24px; }
 }

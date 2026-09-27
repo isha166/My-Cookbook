@@ -433,11 +433,110 @@ function MenuView({ recipe, saveRecipe, navigate, saved }: { recipe: Recipe; sav
   );
 }
 
+function ingredientName(item: string) {
+  return item.replace(/^\d+\s+(?:tbsp|tsp|cups?|cloves?|handful|can|small|large|ripe|per person)\s*/i, '').replace(/^A\s+/i, '');
+}
+
+function CookingStage({ recipe, step, addedIngredients, served, onAddIngredient }: {
+  recipe: Recipe;
+  step: number;
+  addedIngredients: number[];
+  served: boolean;
+  onAddIngredient: (index: number) => void;
+}) {
+  const allIngredients = recipe.ingredients.slice(0, 6);
+  const heat = Math.min(100, 22 + step * 19 + addedIngredients.length * 7);
+  const stageCopy = served
+    ? 'The last little move is yours: carry it to the table.'
+    : step === 0
+      ? 'Tap an ingredient to bring it into the station.'
+      : step === recipe.steps.length - 1
+        ? 'Everything has come together. Give it one last turn.'
+        : 'The pan is listening. Keep adding what the page calls for.';
+
+  return (
+    <div className={`cooking-stage stage-${step} ${served ? 'is-served' : ''}`} aria-label="Animated cooking station">
+      <div className="stage-glow" style={{ opacity: 0.18 + heat / 290 }} />
+      <div className="stage-label"><span className="micro">The counter</span><span>{addedIngredients.length}/{allIngredients.length} ingredients in motion</span></div>
+
+      <div className="ingredient-orbit" aria-label="Ingredients to add">
+        {allIngredients.map((item, index) => {
+          const isAdded = addedIngredients.includes(index);
+          return (
+            <motion.button
+              type="button"
+              key={item}
+              className={`ingredient-morsel ingredient-morsel-${index} ${isAdded ? 'is-added' : ''}`}
+              onClick={() => onAddIngredient(index)}
+              aria-label={`${isAdded ? 'Remove' : 'Add'} ${ingredientName(item)} ${isAdded ? 'from the pan' : 'to the pan'}`}
+              data-testid={`button-cook-ingredient-${index}`}
+              animate={isAdded ? { scale: 0.78, x: 0, y: 102, rotate: 180, opacity: 0.1 } : { scale: 1, x: 0, y: 0, rotate: 0, opacity: 1 }}
+              transition={{ type: 'spring', stiffness: 260, damping: 17 }}
+              whileHover={{ y: -5, rotate: index % 2 ? 3 : -3 }}
+              whileTap={{ scale: 0.92 }}
+            >
+              <span className="morsel-mark" aria-hidden="true"><CircleDot size={15} /></span>
+              <span>{ingredientName(item)}</span>
+              <small>{isAdded ? 'in the pan' : 'add'}</small>
+            </motion.button>
+          );
+        })}
+      </div>
+
+      <motion.div
+        className="pan-shadow"
+        animate={served ? { scale: 0.9, opacity: 0.25 } : { scale: 1, opacity: 0.48 }}
+      />
+      <motion.div className="pan-illustration" animate={served ? { y: 22, rotate: -4 } : { y: [0, -2, 0], rotate: [-1, 1, -1] }} transition={served ? { duration: .5 } : { duration: 4, repeat: Infinity, ease: 'easeInOut' }}>
+        <div className="pan-handle" />
+        <div className="pan-rim">
+          <motion.div className="pan-interior" animate={{ scale: [1, 1.02, 1] }} transition={{ duration: 2.5, repeat: Infinity }}>
+            <div className="pan-food">
+              {Array.from({ length: Math.max(3, Math.min(9, addedIngredients.length + step + 2)) }).map((_, index) => (
+                <motion.i
+                  key={index}
+                  style={{ left: `${18 + ((index * 17) % 62)}%`, top: `${20 + ((index * 23) % 54)}%` }}
+                  animate={{ y: [0, -4, 0], rotate: [0, 12, -8, 0] }}
+                  transition={{ duration: 1.8 + index * .15, repeat: Infinity, delay: index * -.2, ease: 'easeInOut' }}
+                />
+              ))}
+            </div>
+          </motion.div>
+        </div>
+        <div className="heat-ring heat-ring-one" style={{ opacity: heat / 160 }} />
+        <div className="heat-ring heat-ring-two" style={{ opacity: heat / 200 }} />
+        <div className="steam-column" aria-hidden="true">
+          <motion.b animate={{ y: [4, -28, 4], opacity: [0, .55, 0], x: [0, 7, -3] }} transition={{ duration: 2.5, repeat: Infinity, delay: 0 }} />
+          <motion.b animate={{ y: [2, -34, 2], opacity: [0, .4, 0], x: [0, -6, 5] }} transition={{ duration: 2.8, repeat: Infinity, delay: -.8 }} />
+          <motion.b animate={{ y: [8, -25, 8], opacity: [0, .5, 0], x: [0, 4, -5] }} transition={{ duration: 2.2, repeat: Infinity, delay: -1.4 }} />
+        </div>
+      </motion.div>
+
+      <div className="stage-footer">
+        <span>{stageCopy}</span>
+        <span className="heat-meter"><Flame size={14} /> heat <i><b style={{ width: `${heat}%` }} /></i></span>
+      </div>
+
+      <AnimatePresence>
+        {served && (
+          <motion.div className="served-plate" initial={{ opacity: 0, scale: .72, rotate: -12 }} animate={{ opacity: 1, scale: 1, rotate: 2 }} transition={{ type: 'spring', stiffness: 160, damping: 14 }}>
+            <div className="served-food"><span /><span /><span /></div>
+            <div className="served-steam"><i /><i /><i /></div>
+            <strong>ready</strong>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 function CookView({ recipe, navigate, onSave }: { recipe: Recipe; navigate: (view: View) => void; onSave: () => void }) {
   const [step, setStep] = useState(0);
   const [done, setDone] = useState<number[]>([]);
   const [seconds, setSeconds] = useState<number | null>(null);
   const [timerRunning, setTimerRunning] = useState(false);
+  const [addedIngredients, setAddedIngredients] = useState<number[]>([]);
+  const [served, setServed] = useState(false);
   useEffect(() => {
     if (!timerRunning || seconds === null || seconds <= 0) return;
     const interval = window.setInterval(() => setSeconds((value) => value !== null ? Math.max(0, value - 1) : value), 1000);
@@ -446,8 +545,14 @@ function CookView({ recipe, navigate, onSave }: { recipe: Recipe; navigate: (vie
   useEffect(() => { if (seconds === 0) setTimerRunning(false); }, [seconds]);
   const current = recipe.steps[step];
   const markStep = (index: number) => setDone((items) => items.includes(index) ? items : [...items, index]);
-  const goNext = () => { markStep(step); if (step < recipe.steps.length - 1) { setStep(step + 1); setSeconds(null); setTimerRunning(false); } };
+  const addIngredient = (index: number) => setAddedIngredients((items) => items.includes(index) ? items.filter((item) => item !== index) : [...items, index]);
+  const goNext = () => {
+    markStep(step);
+    setAddedIngredients((items) => Array.from(new Set([...items, ...recipe.ingredients.map((_, index) => index).slice(0, Math.min(recipe.ingredients.length, (step + 1) * 2))])));
+    if (step < recipe.steps.length - 1) { setStep(step + 1); setSeconds(null); setTimerRunning(false); }
+  };
   const formatTimer = (value: number) => `${Math.floor(value / 60).toString().padStart(2, '0')}:${(value % 60).toString().padStart(2, '0')}`;
+  const timerProgress = current.timer && seconds !== null ? Math.max(0, Math.min(100, ((current.timer * 60 - seconds) / (current.timer * 60)) * 100)) : 0;
   return (
     <div className="page-wrap">
       <div className="section-head"><div><div className="eyebrow">Page three · hands on</div><h1 className="display-lg" style={{ marginTop:12 }}>Cook the page.</h1></div><p>Put your phone somewhere flour can’t reach. We’ll keep the next move close by.</p></div>
@@ -456,8 +561,13 @@ function CookView({ recipe, navigate, onSave }: { recipe: Recipe; navigate: (vie
         <section className="paper-panel cook-card">
           <div className="cook-card-top"><div><div className="step-kicker">Move {step + 1} of {recipe.steps.length}</div><h1>{current.title}</h1><p className="step-copy">{current.copy}</p></div><div className="micro" style={{ whiteSpace:'nowrap' }}>{recipe.title}</div></div>
           <div className="step-tools">{current.tool && <span className="tool-chip"><CookingPot size={14} /> You’ll need · {current.tool}</span>}<span className="tool-chip"><Flame size={14} /> Keep the heat kind</span></div>
-          {current.timer && <div className="timer-card"><div><span className="micro">A soft timer</span><br /><strong>{seconds === null ? `${current.timer}:00` : formatTimer(seconds)}</strong></div><div className="timer-actions">{seconds === null || seconds === 0 ? <button className="btn btn-ink btn-small" onClick={() => { setSeconds(current.timer! * 60); setTimerRunning(true); }} data-testid="button-start-timer"><Timer size={14} /> Start {current.timer} min</button> : <button className="btn btn-ghost btn-small" onClick={() => setTimerRunning((value) => !value)} data-testid="button-toggle-timer">{timerRunning ? 'Pause' : 'Resume'}</button>}<button className="btn btn-ghost btn-small" onClick={() => { setSeconds(null); setTimerRunning(false); }} data-testid="button-reset-timer">Reset</button></div></div>}
-          {step === recipe.steps.length - 1 ? <div className="completion"><h3>The table is ready.</h3><p>You made {recipe.title}. Take the first bite before you decide whether it needs anything.</p><div className="action-row" style={{ marginTop:0 }}><button className="btn btn-paper" onClick={onSave} data-testid="button-save-completed-recipe"><Bookmark size={15} /> Keep this recipe</button><button className="btn btn-ghost" style={{ borderColor:'rgba(248,240,223,.35)', color:'#f8f0df' }} onClick={() => navigate('home')} data-testid="button-finish-cooking">Back to the opening page</button></div></div> : <div className="cook-foot"><button className="btn btn-ghost" onClick={() => setStep((value) => Math.max(0, value - 1))} disabled={step === 0} data-testid="button-previous-step"><ArrowLeft size={15} /> Previous move</button><button className="btn btn-primary" onClick={goNext} data-testid="button-complete-step">Done with this move <CheckCircle2 size={15} /></button></div>}
+          <AnimatePresence mode="wait">
+            <motion.div key={step} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: .28 }}>
+              <CookingStage recipe={recipe} step={step} addedIngredients={addedIngredients} served={served} onAddIngredient={addIngredient} />
+            </motion.div>
+          </AnimatePresence>
+          {current.timer && <div className="timer-card"><div className="timer-readout"><span className="micro">A soft timer</span><br /><strong>{seconds === null ? `${current.timer}:00` : formatTimer(seconds)}</strong><span className="timer-progress"><i style={{ width: `${timerProgress}%` }} /></span></div><div className="timer-actions">{seconds === null || seconds === 0 ? <button className="btn btn-ink btn-small" onClick={() => { setSeconds(current.timer! * 60); setTimerRunning(true); }} data-testid="button-start-timer"><Timer size={14} /> Start {current.timer} min</button> : <button className="btn btn-ghost btn-small" onClick={() => setTimerRunning((value) => !value)} data-testid="button-toggle-timer">{timerRunning ? 'Pause' : 'Resume'}</button>}<button className="btn btn-ghost btn-small" onClick={() => { setSeconds(null); setTimerRunning(false); }} data-testid="button-reset-timer">Reset</button></div></div>}
+          {step === recipe.steps.length - 1 ? <div className="completion"><h3>{served ? 'The table is ready.' : 'Give it a last turn.'}</h3><p>{served ? `You made ${recipe.title}. Take the first bite before you decide whether it needs anything.` : 'Tap serve when the sauce looks glossy and the page feels complete.'}</p><div className="action-row" style={{ marginTop:0 }}>{!served && <button className="btn btn-paper" onClick={() => { setServed(true); markStep(step); }} data-testid="button-serve-recipe"><Utensils size={15} /> Serve the table</button>}<button className="btn btn-paper" onClick={onSave} data-testid="button-save-completed-recipe"><Bookmark size={15} /> Keep this recipe</button><button className="btn btn-ghost" style={{ borderColor:'rgba(248,240,223,.35)', color:'#f8f0df' }} onClick={() => navigate('home')} data-testid="button-finish-cooking">Back to the opening page</button></div></div> : <div className="cook-foot"><button className="btn btn-ghost" onClick={() => setStep((value) => Math.max(0, value - 1))} disabled={step === 0} data-testid="button-previous-step"><ArrowLeft size={15} /> Previous move</button><button className="btn btn-primary" onClick={goNext} data-testid="button-complete-step">Done with this move <CheckCircle2 size={15} /></button></div>}
         </section>
       </div>
     </div>
