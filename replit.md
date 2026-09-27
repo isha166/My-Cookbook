@@ -1,6 +1,6 @@
-# [Project name]
+# My Cookbook
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+An interactive kitchen journal that turns a user's moment, mood, and pantry into a personalized dinner experience.
 
 ## Run & Operate
 
@@ -10,6 +10,7 @@ _Replace the heading above with the project's name, and this line with one sente
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
 - `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
 - Required env: `DATABASE_URL` — Postgres connection string
+- `pnpm --filter @workspace/my-cookbook run dev` — run the My Cookbook web app
 
 ## Stack
 
@@ -22,23 +23,35 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/my-cookbook/src/App.tsx` — interactive cookbook experience and local recipe logic
+- `artifacts/my-cookbook/src/index.css` — kitchen-journal visual system, responsive layout, and motion
+- `artifacts/my-cookbook/.replit-artifact/artifact.toml` — app artifact metadata and managed web workflow
+- `artifacts/api-server/` — shared API service scaffold, currently unused by the first My Cookbook build
+- `lib/api-spec/openapi.yaml` — shared API contract source of truth
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- The first build is frontend-first and self-contained so the demo remains useful without an external AI provider.
+- Recipe generation is local and context-aware, with a curated fallback path for the hero Italian rainy comfort dinner.
+- Personal data is persisted in browser localStorage for saved recipes, notes, pantry items, shopping checks, and the latest meal context.
+- The app uses a single immersive shell with view transitions rather than conventional dashboard pages.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- Guided meal creation from cuisine, weather, mood, occasion, time, budget, party size, dietary preference, and pantry ingredients
+- Personalized menu reveal with main, side, drink, dessert, timing, servings, cost, and substitutions
+- Cook-along mode with step progression, ingredient interaction, and connected timers
+- Shopping list, pantry inventory, explore surface, and saved cookbook pages with favorites and notes
+- Responsive desktop/mobile layouts with reduced-motion support and accessible labels
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- App name is “My Cookbook”.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- The shared API workflow is scaffolded but is not required by the current frontend-only experience.
+- The artifact workflow supplies `PORT` and `BASE_PATH`; do not run the Vite dev command from the workspace root.
 
 ## Pointers
 

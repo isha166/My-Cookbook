@@ -1,0 +1,1324 @@
+# CULINARA — AI-POWERED INTERACTIVE COOKBOOK
+
+Build a complete, polished, hackathon-ready web application called **CULINARA**.
+
+CULINARA is not a traditional recipe website and should NOT look like a normal food blog, recipe database, or generic AI chatbot.
+
+It is an **immersive, interactive AI cookbook and personal culinary experience** that helps users decide what to cook based on their situation, preferences, ingredients, mood, weather, occasion, time, budget, and number of people.
+
+The experience should feel like:
+
+**a premium editorial cookbook + interactive storybook + modern restaurant website + playful game + AI kitchen assistant.**
+
+The website should be visually spectacular, highly animated, detailed, tactile, and interactive while still being genuinely useful.
+
+---
+
+# 1. CORE PRODUCT IDEA
+
+The central concept is:
+
+> **“Tell CULINARA what your world looks like right now, and it creates what you should eat.”**
+
+Instead of simply searching for:
+
+> “pasta recipes”
+
+the user can say:
+
+> “It’s raining, I want something comforting, I have 30 minutes, I’m cooking for 3 people, I have $20, and I want Italian food.”
+
+CULINARA should transform those inputs into a personalized culinary experience.
+
+The AI should generate or recommend:
+
+* Main dish
+* Side dish
+* Drink
+* Dessert
+* Ingredients
+* Quantities
+* Cooking time
+* Difficulty
+* Estimated cost
+* Substitutions
+* Nutrition information where possible
+* Shopping list
+* Cooking sequence
+
+The interface should visually transform based on the user's choices.
+
+---
+
+# 2. IMPORTANT DESIGN PRINCIPLE
+
+DO NOT make this look like:
+
+* a dashboard
+* a SaaS application
+* a generic AI chatbot
+* a standard recipe card
+* a basic Bootstrap website
+* a grid of rectangular cards
+* a boring food delivery app
+
+Avoid excessive conventional UI elements.
+
+Instead, make the interface feel like a **living digital cookbook**.
+
+Everything should feel tactile and alive.
+
+Elements should move subtly.
+
+Ingredients should have physical presence.
+
+Transitions should feel intentional.
+
+Pages should feel like they are being opened, unfolded, poured, stirred, or transformed.
+
+---
+
+# 3. VISUAL DIRECTION
+
+Overall aesthetic:
+
+**Luxury editorial cookbook × warm kitchen × modern interactive art × cinematic food photography × playful digital interface**
+
+Use a warm sophisticated palette:
+
+* Cream / parchment
+* Deep forest green
+* Tomato red
+* Butter yellow
+* Warm brown
+* Plum
+* Charcoal
+* Soft beige
+
+Use subtle paper textures and grain.
+
+Use a combination of:
+
+* elegant serif typography for major headings
+* clean modern sans-serif typography for controls
+* handwritten/organic accent typography sparingly
+
+The website should feel premium but not overly minimal.
+
+It should have **personality**.
+
+Use:
+
+* irregular shapes
+* organic borders
+* hand-drawn accents
+* food illustrations
+* subtle shadows
+* layered depth
+* paper textures
+* glass where appropriate
+* natural imperfections
+
+---
+
+# 4. GLOBAL ANIMATION LANGUAGE
+
+Animation is one of the most important parts of CULINARA.
+
+Almost every meaningful interaction should have motion.
+
+Use smooth, natural animations rather than random flashy effects.
+
+Animations should feel physical.
+
+Examples:
+
+* lemons slowly roll across a surface
+* basil leaves gently move
+* steam rises from food
+* spoons rotate slightly
+* sauce drips
+* flour particles scatter
+* cards unfold like paper
+* cookbook pages turn
+* ingredients fly toward bowls
+* maps morph into dishes
+* food images gently zoom
+* buttons react when hovered
+* cards tilt slightly toward the cursor
+* objects have subtle parallax
+* transitions resemble moving through a physical kitchen
+
+Use spring-like motion where appropriate.
+
+Avoid excessive bouncing.
+
+The goal is:
+
+**“Everything feels alive.”**
+
+---
+
+# 5. HOME PAGE
+
+The landing page should immediately feel different from a normal website.
+
+## Opening scene
+
+Start with an immersive kitchen/cookbook environment.
+
+Imagine a beautiful wooden kitchen table.
+
+On the table:
+
+* an open cookbook
+* wooden spoon
+* knife
+* scattered herbs
+* lemon
+* tomatoes
+* flour
+* bowl
+* cup of coffee
+* small handwritten notes
+
+Some objects subtly move.
+
+Steam rises from a nearby cup.
+
+A lemon slowly rolls.
+
+A basil leaf moves slightly.
+
+Sunlight shifts subtly across the table.
+
+The user should feel like they have entered a kitchen.
+
+---
+
+## Hero text
+
+Display:
+
+**CULINARA**
+
+Then:
+
+**What are we cooking today?**
+
+Subheading:
+
+> Tell us your mood, your moment, and what you have. We'll take care of the rest.
+
+Primary CTA:
+
+**CREATE MY MEAL**
+
+Secondary CTA:
+
+**EXPLORE THE WORLD**
+
+---
+
+# 6. PERSONALIZATION EXPERIENCE
+
+When the user clicks:
+
+**CREATE MY MEAL**
+
+do not open a boring form.
+
+Instead, guide them through a beautiful interactive sequence.
+
+Each selection should visually transform the environment.
+
+---
+
+# 7. STEP 1 — LOCATION / CUISINE
+
+Question:
+
+**Where are we going tonight?**
+
+Show an interactive world map.
+
+Countries should appear as organic interactive regions.
+
+Possible examples:
+
+🇮🇹 Italy
+🇮🇳 India
+🇯🇵 Japan
+🇲🇽 Mexico
+🇫🇷 France
+🇹🇭 Thailand
+🇰🇷 Korea
+🇬🇷 Greece
+🇹🇷 Turkey
+🇺🇸 USA
+
+Hovering over a country should:
+
+* highlight it
+* reveal a dish
+* slightly zoom the map
+* show cultural food imagery
+
+Clicking a country should trigger a transition.
+
+For example:
+
+Italy selected:
+
+The map should zoom toward Italy.
+
+The map visually morphs into Italian food.
+
+Possible transition:
+
+Italy outline → tomato → pasta → final recipe selection.
+
+---
+
+# 8. STEP 2 — WEATHER
+
+Question:
+
+**What's the weather like?**
+
+Options:
+
+☀️ Sunny
+🌧️ Rainy
+❄️ Cold
+🌤️ Mild
+🔥 Hot
+🌙 Late Night
+
+Each option changes the environment.
+
+Rainy:
+
+* rain animation
+* darker window
+* condensation
+* steam
+* warm interior lighting
+
+Sunny:
+
+* sunlight
+* bright table
+* floating dust particles
+
+Cold:
+
+* subtle frost
+* cool atmosphere
+* steam from hot food
+
+Hot:
+
+* warmer atmosphere
+* citrus
+* refreshing visuals
+
+---
+
+# 9. STEP 3 — MOOD
+
+Question:
+
+**How do you want your food to feel?**
+
+Options:
+
+🧸 Comforting
+⚡ Energetic
+❤️ Romantic
+🎉 Celebratory
+🌿 Fresh
+🌶️ Adventurous
+😴 Lazy
+✨ Indulgent
+
+Each mood should have its own visual personality.
+
+Do not just change colors.
+
+Change:
+
+* background atmosphere
+* animations
+* ingredient imagery
+* typography accents
+* suggested dishes
+
+---
+
+# 10. STEP 4 — OCCASION
+
+Question:
+
+**What's the occasion?**
+
+Examples:
+
+* Everyday Dinner
+* Date Night
+* Family Dinner
+* Dinner Party
+* Birthday
+* Movie Night
+* Study Night
+* Picnic
+* Celebration
+* Sunday Dinner
+
+Use beautiful illustrated icons and microanimations.
+
+---
+
+# 11. STEP 5 — TIME
+
+Ask:
+
+**How much time do you have?**
+
+Options:
+
+⚡ 15 min
+🍳 30 min
+🥘 45 min
+👨‍🍳 1 hour+
+🌙 No rush
+
+The UI should visually communicate time.
+
+---
+
+# 12. STEP 6 — BUDGET
+
+Ask:
+
+**What's the budget?**
+
+Examples:
+
+$10
+$20
+$30
+$50+
+
+Use an animated wallet / coins / shopping basket visual.
+
+The budget should actually influence the generated meal.
+
+---
+
+# 13. STEP 7 — PEOPLE
+
+Ask:
+
+**Who's joining the table?**
+
+Allow:
+
+1 person
+2 people
+3 people
+4 people
+5+ people
+
+Use an animated dining table.
+
+As the user increases the number of people, more chairs appear around the table.
+
+---
+
+# 14. STEP 8 — DIETARY PREFERENCES
+
+Allow:
+
+Vegetarian
+Vegan
+Gluten-Free
+Dairy-Free
+High Protein
+Low Carb
+No Preference
+
+Make this visually elegant rather than a normal checkbox list.
+
+---
+
+# 15. STEP 9 — WHAT DO YOU ALREADY HAVE?
+
+This should be one of the major features.
+
+Title:
+
+**What's already in your kitchen?**
+
+Give the user multiple options:
+
+### Manual ingredients
+
+Search:
+
+> “tomato”
+
+Ingredient appears visually.
+
+Users can drag ingredients into a virtual refrigerator or basket.
+
+### Camera upload
+
+Allow the user to upload a photo of their refrigerator/pantry.
+
+Use AI vision to identify ingredients.
+
+Display:
+
+**I found:**
+
+🍅 Tomatoes
+🥚 Eggs
+🧀 Cheese
+🧅 Onion
+🥛 Milk
+
+Allow the user to confirm/remove ingredients.
+
+---
+
+# 16. AI CHEF
+
+The AI should act as the intelligence behind the entire system.
+
+Do NOT present it as a generic chatbot window.
+
+Instead, integrate it into the experience.
+
+Call it:
+
+**CULINARA AI CHEF**
+
+The AI should consider:
+
+* cuisine
+* weather
+* mood
+* occasion
+* budget
+* time
+* people
+* dietary restrictions
+* available ingredients
+
+Then generate a personalized menu.
+
+---
+
+# 17. AI RESULT
+
+After the user finishes personalization, transition into a dramatic reveal.
+
+Display:
+
+**YOUR TABLE TONIGHT**
+
+Then reveal the generated meal.
+
+Example:
+
+### 🇮🇹 Rainy Italian Comfort Dinner
+
+**Main**
+Creamy Mushroom Tagliatelle
+
+**Side**
+Garlic Herb Bread
+
+**Drink**
+Warm Vanilla Espresso
+
+**Dessert**
+Affogato
+
+Then show:
+
+**Ready in:** 32 minutes
+**Serves:** 3
+**Estimated cost:** $18.40
+
+---
+
+# 18. MENU REVEAL ANIMATION
+
+Do not simply fade everything in.
+
+Create a cinematic sequence.
+
+Example:
+
+1. Table appears.
+2. Plate slides into position.
+3. Main dish appears.
+4. Side plate appears.
+5. Drink appears.
+6. Dessert appears.
+7. Ingredients float into position.
+8. Menu title appears.
+9. Steam rises.
+10. AI Chef message appears.
+
+The final result should feel like a restaurant presentation.
+
+---
+
+# 19. RECIPE EXPERIENCE
+
+Click:
+
+**START COOKING**
+
+This should open an interactive cooking environment.
+
+Do NOT display a giant wall of instructions.
+
+Instead:
+
+**Cook with me.**
+
+---
+
+# 20. INTERACTIVE INGREDIENTS
+
+Show ingredients around a virtual kitchen counter.
+
+Example:
+
+🍅 Tomato
+🧅 Onion
+🧄 Garlic
+🧀 Cheese
+🍝 Pasta
+🫒 Olive Oil
+
+Allow users to interact with them.
+
+Possible interactions:
+
+* drag
+* click
+* rotate
+* chop
+* pour
+* mix
+* sprinkle
+
+When an ingredient is added:
+
+* it physically moves
+* sound/visual feedback occurs
+* particles appear
+* bowl contents update
+
+---
+
+# 21. INTERACTIVE COOKING STEPS
+
+Example:
+
+### Step 1
+
+**Chop the onion**
+
+Show a stylized cutting board.
+
+Allow the user to click/drag the knife.
+
+On completion:
+
+onion changes into chopped pieces.
+
+### Step 2
+
+**Heat the pan**
+
+Show a pan.
+
+Temperature rises visually.
+
+Steam begins appearing.
+
+### Step 3
+
+**Add the ingredients**
+
+Ingredients fly into the pan.
+
+### Step 4
+
+**Stir**
+
+Allow the user to move the spoon.
+
+### Step 5
+
+**Serve**
+
+Food transitions onto a plate.
+
+---
+
+# 22. COOKING TIMER
+
+Never show only:
+
+> 05:00
+
+Instead, make the timer visually connected to the food.
+
+For example:
+
+The sauce gradually changes appearance as the timer progresses.
+
+Steam becomes stronger.
+
+The timer visually surrounds the pan.
+
+When finished:
+
+**DING**
+
+and the food animation changes.
+
+---
+
+# 23. BUILD YOUR OWN DINNER
+
+Create a separate feature:
+
+**BUILD MY TABLE**
+
+Users can create an entire meal by choosing:
+
+Main
+Side
+Drink
+Dessert
+
+Users drag dishes onto a virtual dinner table.
+
+The system calculates:
+
+* total cost
+* total cooking time
+* ingredient overlap
+* shopping list
+* cooking sequence
+
+AI can recommend combinations.
+
+---
+
+# 24. SMART SHOPPING LIST
+
+After generating a meal, provide:
+
+**YOUR SHOPPING LIST**
+
+But don't make it a boring checklist.
+
+Create an animated grocery basket.
+
+Ingredients physically enter the basket.
+
+Example:
+
+🥚 Eggs × 6
+🍅 Tomatoes × 4
+🧄 Garlic × 1
+🧀 Parmesan × 1
+
+Show:
+
+**Estimated total: $18.40**
+
+Allow users to check items off.
+
+Checked items visually move into the basket.
+
+---
+
+# 25. MY INGREDIENTS / PANTRY
+
+Create a pantry page.
+
+Users can save ingredients they regularly have.
+
+Display them as physical objects on shelves.
+
+Example:
+
+Shelf 1:
+Pasta · Rice · Flour
+
+Shelf 2:
+Tomatoes · Onion · Garlic
+
+Shelf 3:
+Cheese · Eggs · Milk
+
+Ingredients should have subtle idle animations.
+
+---
+
+# 26. EXPLORE THE WORLD
+
+Create an interactive exploration section.
+
+Title:
+
+**TASTE THE WORLD**
+
+Show an interactive world map.
+
+Clicking a country reveals:
+
+* famous dishes
+* ingredients
+* food culture
+* regional dishes
+* recipe collections
+
+Example:
+
+Italy
+
+Northern Italy
+Central Italy
+Southern Italy
+
+Clicking a region reveals dishes.
+
+The map should feel like an illustrated culinary atlas.
+
+---
+
+# 27. MOOD EXPLORATION
+
+Create:
+
+**COOK BY MOOD**
+
+Large immersive sections:
+
+Comfort
+Adventure
+Romance
+Celebration
+Fresh
+Lazy
+Energized
+
+Hovering over a mood changes the environment.
+
+---
+
+# 28. WEATHER COOKBOOK
+
+Create:
+
+**COOK BY WEATHER**
+
+Weather should influence recommendations.
+
+Examples:
+
+Rain → soups, pasta, warm desserts
+
+Hot → salads, cold noodles, refreshing drinks
+
+Cold → stews, baked dishes, hot drinks
+
+Sunny → grilled dishes, fresh bowls, fruit desserts
+
+The recommendation logic should be AI-assisted.
+
+---
+
+# 29. OCCASION COLLECTIONS
+
+Create visual collections for:
+
+Date Night
+Dinner Party
+Birthday
+Movie Night
+Family Dinner
+Picnic
+Study Night
+Holiday
+Sunday Dinner
+
+Each collection should feel visually distinct.
+
+---
+
+# 30. LEFTOVER MODE
+
+Add a practical feature:
+
+**DON'T WASTE IT**
+
+Users enter leftover ingredients.
+
+Example:
+
+“I have half an onion, rice, tomatoes, and some cheese.”
+
+CULINARA generates recipes designed specifically around those leftovers.
+
+This should be one of the product's practical utility features.
+
+---
+
+# 31. SUBSTITUTION ENGINE
+
+If the user doesn't have something:
+
+Example:
+
+**No Parmesan?**
+
+CULINARA suggests:
+
+* Pecorino
+* nutritional yeast
+* another available cheese
+
+Allow:
+
+**Replace →**
+
+The recipe quantities should update automatically when possible.
+
+---
+
+# 32. RESPONSIVE DESIGN
+
+The application must work beautifully on:
+
+* desktop
+* laptop
+* tablet
+* mobile
+
+On mobile, transform the interactive environment rather than simply shrinking the desktop UI.
+
+---
+
+# 33. MICROINTERACTIONS
+
+Add details throughout the application.
+
+Examples:
+
+* hover over ingredient → ingredient wiggles
+* hover over country → map responds
+* cursor movement → subtle parallax
+* button click → tactile response
+* recipe card → unfolds
+* favorite → heart becomes illustrated
+* shopping item → flies into basket
+* ingredient added → small particles
+* completed recipe → celebratory animation
+
+These small interactions are important.
+
+---
+
+# 34. SOUND
+
+If appropriate, provide optional subtle sound effects:
+
+* page turn
+* ingredient drop
+* chopping
+* pan sizzle
+* timer completion
+* button interaction
+
+Sound should be OFF by default or user-controllable.
+
+Do not make the website annoying.
+
+---
+
+# 35. ACCESSIBILITY
+
+Despite the visual complexity:
+
+* maintain readable contrast
+* provide keyboard navigation
+* provide text alternatives
+* do not rely solely on animation
+* respect reduced-motion preferences
+* keep important information accessible without animation
+
+---
+
+# 36. PERFORMANCE
+
+Animations must feel smooth.
+
+Do not overload the site with unnecessarily heavy 3D assets.
+
+Use:
+
+* CSS animations
+* SVG
+* optimized images
+* Framer Motion
+* lightweight canvas/WebGL only where useful
+
+Prioritize smoothness over quantity.
+
+---
+
+# 37. TECHNOLOGY
+
+Preferred stack:
+
+Frontend:
+
+* React
+* Next.js
+* TypeScript
+* Tailwind CSS
+
+Animation:
+
+* Framer Motion
+* GSAP where necessary
+* SVG animations
+* Three.js only for genuinely useful 3D elements
+
+Backend:
+
+* Next.js API routes or lightweight backend
+
+Database:
+
+* Supabase or Firebase
+
+AI:
+
+* LLM API for recipe generation and personalization
+* Vision-capable AI for ingredient recognition
+
+Structure AI responses as JSON wherever possible so the UI can reliably render:
+
+* recipes
+* ingredients
+* quantities
+* cooking steps
+* timing
+* substitutions
+* shopping list
+* estimated cost
+
+---
+
+# 38. AI PROMPTING LOGIC
+
+The AI should receive structured user context such as:
+
+{
+cuisine,
+weather,
+mood,
+occasion,
+timeAvailable,
+budget,
+people,
+dietaryPreferences,
+availableIngredients
+}
+
+Then return structured meal data.
+
+The AI should prioritize ingredients already available.
+
+It should respect:
+
+* dietary restrictions
+* budget
+* cooking time
+* number of servings
+
+Avoid generating unrealistic recipes.
+
+---
+
+# 39. FALLBACK MODE
+
+The application must still work if the AI/API fails.
+
+Create a small local dataset of curated recipes.
+
+If the API fails:
+
+Show:
+
+**CULINARA is using its house recipes right now.**
+
+Then load fallback recipes.
+
+Never allow the entire demo to break because of an API call.
+
+---
+
+# 40. HACKATHON DEMO FLOW
+
+The primary demo should be approximately:
+
+### 1.
+
+Open CULINARA.
+
+### 2.
+
+Click:
+
+**CREATE MY MEAL**
+
+### 3.
+
+Choose:
+
+🇮🇹 Italian
+🌧️ Rainy
+🧸 Comforting
+🍝 Dinner
+⏱️ 30 minutes
+💰 $20
+👥 3 people
+
+### 4.
+
+AI generates a personalized dinner.
+
+### 5.
+
+Beautiful animated table reveal.
+
+### 6.
+
+Open the recipe.
+
+### 7.
+
+Enter interactive cooking mode.
+
+### 8.
+
+Interact with ingredients.
+
+### 9.
+
+Complete the recipe.
+
+### 10.
+
+Generate shopping list.
+
+### 11.
+
+Show:
+
+**SAVE TO MY COOKBOOK**
+
+This should be the polished “hero journey” of the application.
+
+---
+
+# 41. NAVIGATION
+
+Use a clean navigation structure:
+
+CULINARA
+
+* Home
+* Explore
+* Mood
+* Weather
+* Occasions
+* My Ingredients
+* AI Chef
+* Build My Table
+* Shopping List
+* My Cookbook
+
+Do not overwhelm the navigation.
+
+Some features can be grouped into Explore.
+
+---
+
+# 42. MY COOKBOOK
+
+Users can save recipes.
+
+Make it look like an actual digital cookbook.
+
+Recipes should appear as pages.
+
+Clicking a saved recipe should feel like opening a physical cookbook.
+
+Include:
+
+* favorites
+* recently cooked
+* saved recipes
+* personal notes
+
+Allow users to write notes such as:
+
+> “Use less garlic next time.”
+
+---
+
+# 43. PERSONALITY
+
+CULINARA should feel warm, clever, curious, and slightly playful.
+
+The AI should not speak like a corporate assistant.
+
+Instead of:
+
+> “Based on your preferences, I recommend…”
+
+Use:
+
+> **“Rainy night? I know exactly what we need.”**
+
+Then reveal the meal.
+
+Keep the personality tasteful.
+
+---
+
+# 44. IMPORTANT UX RULE
+
+Do not animate everything constantly.
+
+Use:
+
+### Idle animation
+
+Very subtle movement.
+
+### Interaction animation
+
+Stronger response.
+
+### Transition animation
+
+Cinematic.
+
+### Completion animation
+
+Rewarding.
+
+The page should feel alive without becoming chaotic.
+
+---
+
+# 45. FINAL VISUAL GOAL
+
+When someone sees CULINARA, their first reaction should be:
+
+> **“Wait… this is a cookbook?”**
+
+The second reaction should be:
+
+> **“I want to interact with this.”**
+
+And after using it:
+
+> **“Okay, this is actually useful.”**
+
+The project should successfully combine:
+
+**USEFULNESS + AI + DESIGN + INTERACTION + STORYTELLING + FOOD**
+
+Do not sacrifice functionality for aesthetics.
+
+Do not sacrifice aesthetics for functionality.
+
+The final result should feel like a **real product prototype that could become a startup**, not a school project.
+
+---
+
+# 46. MOST IMPORTANT PRIORITY
+
+If development time is limited, prioritize these features in this exact functional flow:
+
+**1. Beautiful landing experience**
+
+↓
+
+**2. Context-based meal creation**
+
+↓
+
+**3. AI-generated personalized menu**
+
+↓
+
+**4. Animated recipe experience**
+
+↓
+
+**5. Interactive cooking mode**
+
+↓
+
+**6. Shopping list**
+
+↓
+
+**7. Ingredient/fridge recognition**
+
+↓
+
+**8. Explore / World / Mood / Weather**
+
+Everything else is secondary.
+
+The application should remain impressive even if secondary features are simplified.
+
+---
+
+# FINAL INSTRUCTION
+
+Build CULINARA as a **complete interactive experience**, not a collection of static pages.
+
+Every major screen should have:
+
+* meaningful interactions
+* purposeful animation
+* visual storytelling
+* smooth transitions
+* responsive behavior
+* polished typography
+* high-quality food imagery
+* consistent visual language
+
+Make the interface feel tactile, cinematic, playful, warm, intelligent, and premium.
+
+The final result should look like someone spent months designing a futuristic digital cookbook — while remaining technically realistic enough to function as a hackathon MVP.

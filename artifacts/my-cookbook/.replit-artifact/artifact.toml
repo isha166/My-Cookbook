@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "My Cookbook"
+description = "An immersive interactive cookbook that turns a user's mood, moment, time, budget, and ingredients into a personalized meal, guided cooking session, shopping list, and saved recipe collection."
+version = "1.0.0"
+id = "artifacts/my-cookbook"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19270
+
+[services.development]
+run = "pnpm --filter @workspace/my-cookbook run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/my-cookbook", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/my-cookbook/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19270"
+BASE_PATH = "/"
